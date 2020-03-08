@@ -10,15 +10,13 @@ Launcher is located in the top right corner of the browser window having mic ico
 
 ![launcher location doc](/docs/images/extension.png)
 
-
 Launcher contains 2 input modes :
 
 - **Voice** : You can give voice commands to your browser if the popup is open and listening.
 
-- **Text** : You can paste text or start typing the command when the popup is open. An input box and __Go__ button appears when you start typing.
+- **Text** : You can paste text or start typing the command when the popup is open. An input box and **Go** button appears when you start typing.
 
-**How it works** -  [Demo video](https://www.youtube.com/watch?v=3sqKsfj8WRE&feature=emb_title)
-
+**How it works** - [Demo video](https://www.youtube.com/watch?v=3sqKsfj8WRE&feature=emb_title)
 
 ## Discussion
 
@@ -44,7 +42,7 @@ npm start
 
 This will launch a new Firefox browser with the extension installed. You should probably have [Nightly or Developer Edition](https://www.mozilla.org/en-US/firefox/channel/desktop/) installed.
 
-You may face errors on performing ```npm install``` that can be resolved by updating the node to its latest version [see here](https://www.hostingadvice.com/how-to/update-node-js-latest-version/)
+You may face errors on performing `npm install` that can be resolved by updating the node to its latest version [see here](https://www.hostingadvice.com/how-to/update-node-js-latest-version/)
 
 If a new browser does not open, it might be because the path to Nightly is not found. Use the command `FIREFOX="/usr/bin/firefox" npm start` instead.
 
@@ -113,6 +111,58 @@ OPEN_POPUP_ON_START=1 npm start
 
 This will open the popup in a tab and reopen it whenever the extension restarts. Reloading the tab is equivalent to reopening the popup.
 
+### Testing with jest
+
+Install Jest using [`yarn`](https://yarnpkg.com/en/package/jest):
+
+```bash
+yarn add --dev jest
+```
+
+Or [`npm`](https://www.npmjs.com/):
+
+```bash
+npm install --save-dev jest
+```
+
+Note: Jest documentation uses `yarn` commands, but `npm` will also work. You can compare `yarn` and `npm` commands in the [yarn docs, here](https://yarnpkg.com/en/docs/migrating-from-npm#toc-cli-commands-comparison).
+
+Let's get started by writing a test for a hypothetical function that adds two numbers. First, create a `sum.js` file:
+
+```javascript
+function multiply(a, b) {
+  return a * b;
+}
+module.exports = multiply;
+```
+
+Then, create a file named `multiply.test.js`. This will contain our actual test:
+
+```javascript
+const multiply = require("./multiply");
+
+test("adds 1 * 2 to equal 2", () => {
+  expect(multiply(1, 2)).toBe(2);
+});
+```
+
+Add the following section to your `package.json`:
+
+```json
+{
+  "scripts": {
+    "test": "jest"
+  }
+}
+```
+
+Finally, run `yarn test` or `npm run test` and Jest will print this message:
+
+````bash
+PASS  ./multiply.test.js
+✓ adds 1 * 2 to equal 2 (5ms)
+
+
 ### Writing a new command / intent
 
 Please see [Writing An Intent](./docs/writing-an-intent.md).
@@ -144,7 +194,7 @@ To try, run:
 
 ```sh
 npm run start-android
-```
+````
 
 You may see an error message `Android device ... was not found in list: ["99EAP164UC"]`: if so, then 99EAP164UC (for example) is your Android device name. Try again:
 
