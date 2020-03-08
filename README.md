@@ -158,10 +158,11 @@ Add the following section to your `package.json`:
 
 Finally, run `yarn test` or `npm run test` and Jest will print this message:
 
-````bash
+```bash
 PASS  ./multiply.test.js
 ✓ adds 1 * 2 to equal 2 (5ms)
 
+```
 
 ### Writing a new command / intent
 
@@ -194,7 +195,7 @@ To try, run:
 
 ```sh
 npm run start-android
-````
+```
 
 You may see an error message `Android device ... was not found in list: ["99EAP164UC"]`: if so, then 99EAP164UC (for example) is your Android device name. Try again:
 
